@@ -28,7 +28,7 @@ app.MapGet("/startprocess", async () =>
 
 
     var content = new StringContent(json, Encoding.UTF8, "application/json");
-    var response = await client.PostAsync("http://localhost:8080/engine-rest/process-definition/key/Process_18azszf/start", content);
+    var response = await client.PostAsync("http://localhost:8080/engine-rest/process-definition/key/SasoftcoColaborators/start", content);
     var responseString = await response.Content.ReadAsStringAsync();
 
     
@@ -46,7 +46,7 @@ app.MapGet("/cargarvariables/{id}", async (string id) =>
     var Url = baseUrl + "/task/" + id + "/variables";
     var response = await client.GetAsync(Url);
     var datos = await response.Content.ReadAsStringAsync();
-    Console.Write(Url + "\n");
+    
     Url = " ";
     return datos;
 });

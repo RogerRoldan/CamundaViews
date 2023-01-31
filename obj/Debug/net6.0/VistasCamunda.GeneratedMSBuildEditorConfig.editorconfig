@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Roger Roldan\Desktop\Sasoftco\Gov\Msg Foundation\VistasCamunda\VistasCamunda\VistasCamunda
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Roger Roldan/Desktop/Sasoftco/Gov/Msg Foundation/VistasCamunda/VistasCamunda/VistasCamunda/Pages/AprobarSolicitud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXByb2JhclNvbGljaXR1ZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Roger Roldan/Desktop/Sasoftco/Gov/Msg Foundation/VistasCamunda/VistasCamunda/VistasCamunda/Pages/CargarVariables.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyZ2FyVmFyaWFibGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Roger Roldan/Desktop/Sasoftco/Gov/Msg Foundation/VistasCamunda/VistasCamunda/VistasCamunda/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Roger Roldan/Desktop/Sasoftco/Gov/Msg Foundation/VistasCamunda/VistasCamunda/VistasCamunda/Pages/RevisarSolicitud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmV2aXNhclNvbGljaXR1ZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Roger Roldan/Desktop/Sasoftco/Gov/Msg Foundation/VistasCamunda/VistasCamunda/VistasCamunda/Pages/Shared/_ValidationScriptsPartial.cshtml]
