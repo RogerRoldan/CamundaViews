@@ -1,0 +1,125 @@
+﻿@page
+@model VistasCamunda.Pages.AceptacionContratoModel
+@{
+    ViewData["Title"] = "Aceptación de Contrato";
+}
+<body>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="col-10 card row">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-7">
+                        <h2>Aceptación de Contrato</h2>
+                    </div>
+                    <div class="col-5 d-flex justify-content-end">
+                        <img src="img/LogoSasoftco.png" alt="Logo de mi sitio web" width="200">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+
+                <form method="post">
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="id1">Id:</label>
+                            <input type="text" class="form-control" name="idtask" id="id1" value="@Model.IdTask" readonly />
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="idInstanced">Id Instancia:</label>
+                            <input type="text" class="form-control" name="idInstanced" id="IdInstanced" value="@Model.IdInstanced" readonly />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="nombres">Nombres:</label>
+                            <input type="text" class="form-control" name="Nombres" id="nombres" value="@Model.Nombres" placeholder="Ingresa tus nombres" readonly />
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="apellidos">Apellidos:</label>
+                            <input type="text" class="form-control" name="Apellidos" id="apellidos" value="@Model.Apellidos" placeholder="Ingresa tus apellidos" readonly />
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="form-group col-2">
+                            <label for="edad">Edad:</label>
+                            <input type="number" class="form-control" name="Edad" id="edad" value="@Model.Edad" placeholder="Ingresa tu edad" />
+                        </div>
+                        <div class="form-group col-5">
+                            <label for="cargo">Cargo:</label>
+                            <input type="text" class="form-control" name="Cargo" id="cargo" value="@Model.Cargo" placeholder="Ingresa tu cargo" readonly/>
+                        </div>
+                        <div class="form-group col-5">
+                            <label for="ciudad">Ciudad:</label>
+                            <input type="text" class="form-control" name="Ciudad" id="ciudad" value="@Model.Ciudad" placeholder="Ingresa tu ciudad" required />
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="form-group col-6">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="Email" id="email" value="@Model.Email" placeholder="Ingresa tu email" required />
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="telefono">Telefono:</label>
+                            <input type="tel" class="form-control" name="Telefono" id="telefono" value="@Model.Telefono" placeholder="Ingresa tu telefono" required />
+                        </div>
+                    </div>
+                    <div class="form-group mt-1">
+                        <label for="observaciones">Observaciones:</label>
+                        <input type="text" class="form-control" name="Observaciones" id="observaciones" value="@Model.Observaciones" placeholder="Ingresa tu observacion" readonly />
+                    </div>
+                    <div class="row mb-1 mt-1">
+                        <div class="form-group col-2">
+                            <label for="aprobacion">Aprobacion:</label>
+                            <input type="text" class="form-control" name="Aprobacion" id="aprobacion" readonly />
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="codcontrato">Codigo de Contrato:</label>
+                            <input type="text" class="form-control" name="CodContrato" id="codcontrato" value="@Model.CodContrato" readonly/>
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="valorcontrato">Valor de Contrato:</label>
+                            <input type="text" class="form-control" name="ValorContrato" id="valorcontrato" value="@Model.ValorContrato" readonly />
+                        </div>    
+                        <div class="form-group col-4">
+                            
+                             <div class="form-floating">
+                            <select class="form-select" id="floatingSelect" name="AceptarContrato" required >
+                                <option selected disabled>Seleccione una opcion</option>
+                                <option value="true">Aceptar</option>
+                                <option value="false">No Aceptar</option>                           
+                            </select>
+                                <label for="floatingSelect">¿Desea aceptar el contrato?</label>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="text-center card-footer">
+                        <button type="submit" asp-page-handler="OnPost" class="btn btn-primary m-2">Registrar</button>
+                        <a href="OpenProcess" class="btn btn-primary">Atras</a>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+        var inputAprobacion = document.getElementById("aprobacion");
+        if (@Model.Aprobacion.ToLower() == true) {
+            inputAprobacion.value = "Aprobado";
+        }
+        else if (@Model.Aprobacion.ToLower() == false) {
+            inputAprobacion.value = "No Aprobado";
+        }
+    </script>
+    <script>
+        var valor = document.getElementById("valorcontrato");
+        valor.addEventListener("change", function () {
+            valor.value = new Intl.NumberFormat("es-CO", {
+                style: "currency",
+                currency: "COP"
+            }).format(valor.value);
+        });
+    </script>
+
+</body>

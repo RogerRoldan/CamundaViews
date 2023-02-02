@@ -33,9 +33,7 @@ namespace VistasCamunda.Pages
             Ciudad = variables.Ciudad.value;
             Email = variables.Email.value;
             Telefono = variables.Telefono.value;
-
-            
-            
+ 
 
         }
         [HttpPost]
@@ -57,7 +55,14 @@ namespace VistasCamunda.Pages
             string urlcompletetask = "http://localhost:8080/engine-rest/task/" + id1 + "/complete";
             var responsecompletetask = client.PostAsync(urlcompletetask, dataobservacion).Result.Content.ReadAsStringAsync().Result;
             Console.Write(urlcompletetask+"\n");
-            return RedirectToPage("/AprobarSolicitud", new { idtask = id1, idinstanced = idinstanced });
+
+            //idnewtask
+            string UrlNewTask = "http://localhost:8080/engine-rest/task?processInstanceId=" + idinstanced;
+            var responseNewTask = client.GetAsync(UrlNewTask).Result.Content.ReadAsStringAsync().Result;
+            var newtask = JsonConvert.DeserializeObject<dynamic>(responseNewTask)[0];
+            var idnewtask = Convert.ToString(newtask.id);
+
+            return RedirectToPage("/AprobarSolicitud", new { idtask = idnewtask, idinstanced = idinstanced });
             }
         }
 }

@@ -6,7 +6,7 @@ using VistasCamunda.Models;
 
 namespace VistasCamunda.Pages
 {
-    public class AprobarSolicitudModel : PageModel
+    public class RealizarContratoModel : PageModel
     {
         public string IdTask { get; set; }
         public string IdInstanced { get; set; }
@@ -18,6 +18,8 @@ namespace VistasCamunda.Pages
         public string Email { get; set; }
         public int Telefono { get; set; }
         public string Observaciones { get; set; }
+        public string Aprobacion { get; set; }
+        
 
 
         public async Task OnGet(string idtask, string idinstanced)
@@ -36,18 +38,18 @@ namespace VistasCamunda.Pages
             Email = variables.Email.value;
             Telefono = variables.Telefono.value;
             Observaciones = variables.Observaciones.value;
-
-
+            Aprobacion =variables.Aprobacion.value;
 
         }
         [HttpPost]
-        public IActionResult OnPost(string id1, string idinstanced, string Observaciones, string Aprobacion, string Nombres)
+        public IActionResult OnPost(string id1, string idinstanced, string CodContrato, string ValorContrato)
         {
             HttpClient client = new HttpClient();
 
             Variablecomplete newvariable = new Variablecomplete();
             newvariable.variables = new Dictionary<string, AtributeComplete>();
-            newvariable.variables.Add("Aprobacion", new AtributeComplete { value = Aprobacion });
+            newvariable.variables.Add("CodContrato", new AtributeComplete { value = CodContrato });
+            newvariable.variables.Add("ValorContrato", new AtributeComplete { value = ValorContrato });
             var json = JsonConvert.SerializeObject(newvariable);
 
             Console.Write(json + "\n");
@@ -60,19 +62,13 @@ namespace VistasCamunda.Pages
             var responsecompletetask = client.PostAsync(urlcompletetask, dataobservacion).Result.Content.ReadAsStringAsync().Result;
 
 
-            if (Aprobacion == "true") {            
             //idnewtask
             string UrlNewTask = "http://localhost:8080/engine-rest/task?processInstanceId=" + idinstanced;
             var responseNewTask = client.GetAsync(UrlNewTask).Result.Content.ReadAsStringAsync().Result;
             var newtask = JsonConvert.DeserializeObject<dynamic>(responseNewTask)[0];
             var idnewtask = Convert.ToString(newtask.id);
 
-            return RedirectToPage("/RealizarContrato", new { idtask = idnewtask, idinstanced = idinstanced });
-            }
-            else
-            {
-                return RedirectToPage("/ColaboradorNoContratado", new { nombres = Nombres });
-            }
+            return RedirectToPage("/AceptacionContrato", new { idtask = idnewtask, idinstanced = idinstanced });
         }
     }
 }
