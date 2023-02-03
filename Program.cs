@@ -10,13 +10,12 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-string baseUrl = "http://localhost:8080/engine-rest";
-CamundaClient camunda = CamundaClient.Create(baseUrl);
+string BaseUrl = builder.Configuration.GetConnectionString("CamundaBaseUrl");
+CamundaClient camunda = CamundaClient.Create(BaseUrl);
 
 app.MapGet("/startprocess", async () =>
 {
     HttpClient client = new HttpClient();
-
 
     //httpclient post enviando un json
 
@@ -26,9 +25,8 @@ app.MapGet("/startprocess", async () =>
     };
     string json = JsonConvert.SerializeObject(jsonObject);
 
-
     var content = new StringContent(json, Encoding.UTF8, "application/json");
-    var response = await client.PostAsync("http://localhost:8080/engine-rest/process-definition/key/SasoftcoColaborators/start", content);
+    var response = await client.PostAsync(BaseUrl+"/process-definition/key/SasoftcoColaborators/start", content);
     var responseString = await response.Content.ReadAsStringAsync();
 
     
@@ -43,7 +41,7 @@ app.MapGet("/startprocess", async () =>
 app.MapGet("/cargarvariables/{id}", async (string id) =>
 {
     HttpClient client = new HttpClient();
-    var Url = baseUrl + "/task/" + id + "/variables";
+    var Url = BaseUrl + "/task/" + id + "/variables";
     var response = await client.GetAsync(Url);
     var datos = await response.Content.ReadAsStringAsync();
     

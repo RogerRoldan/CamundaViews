@@ -43,7 +43,7 @@ namespace VistasCamunda.Pages
 
         }
         [HttpPost]
-        public IActionResult OnPost(string idtask, string idinstanced, string AceptarContrato, string Nombres )
+        public IActionResult OnPost(string id1, string idinstanced, string AceptarContrato, string Nombres )
         {
             HttpClient client = new HttpClient();
 
@@ -53,14 +53,15 @@ namespace VistasCamunda.Pages
             var json = JsonConvert.SerializeObject(newvariable);
 
             Console.Write(json + "\n");
-            Console.Write(newvariable);
+            Console.Write(newvariable+"\n");
             var dataobservacion = new StringContent(json, Encoding.UTF8, "application/json");
 
             //taskcomplete
 
-            string urlcompletetask = "http://localhost:8080/engine-rest/task/" + idtask + "/complete";
+            string urlcompletetask = "http://localhost:8080/engine-rest/task/" + id1 + "/complete";
             var responsecompletetask = client.PostAsync(urlcompletetask, dataobservacion).Result.Content.ReadAsStringAsync().Result;
-
+            Console.Write(responsecompletetask + "\n");
+            Console.Write(urlcompletetask);
             if (AceptarContrato == "true")
             {
             return RedirectToPage("/ColaboradorContratado", new { nombres = Nombres });

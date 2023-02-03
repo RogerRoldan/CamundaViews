@@ -7,55 +7,69 @@
 
 </head>
 <body>
-
     <div class="container d-flex justify-content-center mt-5">
-        <div class="col-8 card">
+        <div class="col-10 card row">
             <div class="card-header">
-                <h2>Formulario de Ingreso</h2>
+                <div class="row">
+                    <div class="col-7">
+                        <h2>Formulario de Ingreso</h2>
+                    </div>
+                    <div class="col-5 d-flex justify-content-end">
+                        <img src="img/LogoSasoftco.png" alt="Logo de mi sitio web" width="200">
+                    </div>
+                </div>
             </div>
             
             <div class="card-body">
-                
+
                 <form method="post">
-                    <div class="form-group">
-                        <label for="id1">Id:</label>
-                        <input type="text" class="form-control" name="id1" id="id1" value="@Model.IdTask" readonly />
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="id1">Id:</label>
+                            <input type="text" class="form-control" name="id1" id="id1" value="@Model.IdTask" readonly />
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="idInstanced">Id Instancia:</label>
+                            <input type="text" class="form-control" name="IdInstanced" id="IdInstanced" value="@Model.IdInstanced" readonly />
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="idInstanced">Id Instancia:</label>
-                        <input type="text" class="form-control" name="idInstanced" id="IdInstanced" value="@Model.IdInstanced" readonly />
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="nombres">Nombres:</label>
+                            <input type="text" class="form-control" name="Nombres" id="nombres"  placeholder="Ingresa tus nombres"  />
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="apellidos">Apellidos:</label>
+                            <input type="text" class="form-control" name="Apellidos" id="apellidos"  placeholder="Ingresa tus apellidos"  />
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="nombres">Nombres:</label>
-                        <input type="text" class="form-control" name="Nombres" id="nombres" placeholder="Ingresa tus nombres" />
+                    <div class="row mt-1">
+                        <div class="form-group col-2">
+                            <label for="edad">Edad:</label>
+                            <input type="number" class="form-control" name="Edad" id="edad"  placeholder="Ingresa tu edad" />
+                        </div>
+                        <div class="form-group col-5">
+                            <label for="cargo">Cargo:</label>
+                            <input type="text" class="form-control" name="Cargo" id="cargo"  placeholder="Ingresa tu cargo" />
+                        </div>
+                        <div class="form-group col-5">
+                            <label for="ciudad">Ciudad:</label>
+                            <input type="text" class="form-control" name="Ciudad" id="ciudad"  placeholder="Ingresa tu ciudad" required />
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="apellidos">Apellidos:</label>
-                        <input type="text" class="form-control" name="Apellidos" id="apellidos" placeholder="Ingresa tus apellidos" />
+                    <div class="row mt-1">
+                        <div class="form-group col-6">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="Email" id="email"  placeholder="Ingresa tu email" required />
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="telefono">Telefono:</label>
+                            <input type="tel" class="form-control" name="Telefono" id="telefono"  placeholder="Ingresa tu telefono" required />
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="edad">Edad:</label>
-                        <input type="number" class="form-control" name="Edad" id="edad" placeholder="Ingresa tu edad" />
-                    </div>
-                    <div class="form-group">
-                        <label for="cargo">Cargo:</label>
-                        <input type="text" class="form-control" name="Cargo" id="cargo" placeholder="Ingresa tu cargo" />
-                    </div>
-                    <div class="form-group">
-                        <label for="ciudad">Ciudad:</label>
-                        <input type="text" class="form-control" name="Ciudad" id="ciudad" placeholder="Ingresa tu ciudad" />
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" name="Email" id="email" placeholder="Ingresa tu email" />
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono">Telefono:</label>
-                        <input type="tel" class="form-control" name="Telefono" id="telefono" placeholder="Ingresa tu telefono" />
-                    </div>
-                    <div class="text-center card-footer">
-                        <button type="submit" asp-page-handler="OnPost" class="btn btn-primary m-2">Registrar</button>
-                        <a href="OpenProcess" class="btn btn-primary">Atras</a>
+                    <div class="text-center card-footer mt-2">
+                        <button type="submit" asp-page-handler="OnPost" class="btn btn-primary m-1">Enviar</button>
+                        
                     </div>
                 </form>
                 
