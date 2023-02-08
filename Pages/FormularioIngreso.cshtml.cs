@@ -20,13 +20,11 @@ namespace VistasCamunda.Pages
 
         }
         [HttpPost]
-        public IActionResult OnPost(string id1,string IdInstanced ,string Nombres, string Apellidos, int Edad,  string Cargo, string Ciudad, string Email, int Telefono) 
+        public IActionResult OnPost(string id1,string IdInstanced ,string Nombres, string Apellidos, int Edad,  string Cargo, string Ciudad, string Email, int Telefono, IFormFile HojaVida) 
         {
             HttpClient client = new HttpClient();
             
             var idprocess = id1;
-            
-
 
             Variable variables = new Variable();
             variables.modifications = new Dictionary<string, Atribute>();
@@ -37,7 +35,7 @@ namespace VistasCamunda.Pages
             variables.Add("Ciudad", Ciudad, "String");
             variables.Add("Email", Email, "String");
             variables.Add("Telefono", Telefono, "integer");
-
+            variables.Add("HojaVida.pdf", HojaVida, "Bytes");
 
             string json = JsonConvert.SerializeObject(variables);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
