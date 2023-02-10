@@ -1,9 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Text;
 using VistasCamunda.Models;
+using System.Net.Http;
 
+
+
+using static Iana.MediaTypes;
+using System.Threading.Tasks;
 
 namespace VistasCamunda.Pages
 {
@@ -20,10 +26,27 @@ namespace VistasCamunda.Pages
 
         }
         [HttpPost]
-        public IActionResult OnPost(string id1,string IdInstanced ,string Nombres, string Apellidos, int Edad,  string Cargo, string Ciudad, string Email, int Telefono, IFormFile HojaVida) 
+        public IActionResult OnPost(string id1, string IdInstanced, string Nombres, string Apellidos, int Edad, string Cargo, string Ciudad, string Email, int Telefono, IFormFile HojaVida)
         {
             HttpClient client = new HttpClient();
+            string NombreArchivo = "HojaVida"; //Nombre del archivo
+
+
+            //-------------------------------------
+            string urlbinary = "http://localhost:8080/engine-rest/task/" + id1 + "/variables/" + NombreArchivo +"/data";
+            client.BaseAddress = new Uri(urlbinary);
+            //se debe agregar el  enctype="multipart/form-data" en el form
+            var file = HojaVida.OpenReadStream();
+            var content = new MultipartFormDataContent();
+            //Para agregar un stream file
+            content.Add(new StreamContent(file), "data", "HojaVida"+ Nombres + ".pdf");
+            content.Add(new StringContent("File"), "valueType");
+
+            var response = client.PostAsync("", content).Result.Content.ReadAsStringAsync().Result;
             
+
+            //-------------------------------------------------
+
             var idprocess = id1;
 
             Variable variables = new Variable();
@@ -35,13 +58,14 @@ namespace VistasCamunda.Pages
             variables.Add("Ciudad", Ciudad, "String");
             variables.Add("Email", Email, "String");
             variables.Add("Telefono", Telefono, "integer");
-            variables.Add("HojaVida.pdf", HojaVida, "Bytes");
-
+            //variables.Add("HojaVida.pdf", HojaVida, "Bytes");
+            
+            
             string json = JsonConvert.SerializeObject(variables);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var contentVariables = new StringContent(json, Encoding.UTF8, "application/json");
 
             string Url = "http://localhost:8080/engine-rest/task/" + idprocess + "/variables";
-            var responseVariables = client.PostAsync(Url, content).Result.Content.ReadAsStringAsync().Result;
+            var responseVariables = client.PostAsync(Url, contentVariables).Result.Content.ReadAsStringAsync().Result;
 
             //complete task
             var jsonComplete = new{ variables = new { }       };
@@ -58,10 +82,20 @@ namespace VistasCamunda.Pages
             var newtask = JsonConvert.DeserializeObject<dynamic>(responseNewTask)[0];
             var idnewtask = Convert.ToString(newtask.id);
 
+            //// form key
+            string UrlFormKey = "http://localhost:8080/engine-rest/task/" + idnewtask + "/form";
+            var responseFormKey = client.GetAsync(UrlFormKey).Result.Content.ReadAsStringAsync().Result;
+            var formkey = JsonConvert.DeserializeObject<dynamic>(responseFormKey);
+            var formkeytext = Convert.ToString(formkey.key);
 
-            return RedirectToPage("/RevisarSolicitud", new { idtask = idnewtask, idinstanced = IdInstanced });
+            Console.Write(formkeytext);
+
+
+            return RedirectToPage(formkeytext, new { idtask = idnewtask, idinstanced = IdInstanced });
         }
     }
+
+
 }
 
             

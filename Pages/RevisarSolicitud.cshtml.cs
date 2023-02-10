@@ -62,7 +62,16 @@ namespace VistasCamunda.Pages
             var newtask = JsonConvert.DeserializeObject<dynamic>(responseNewTask)[0];
             var idnewtask = Convert.ToString(newtask.id);
 
-            return RedirectToPage("/AprobarSolicitud", new { idtask = idnewtask, idinstanced = idinstanced });
-            }
+            //// form key
+            string UrlFormKey = "http://localhost:8080/engine-rest/task/" + idnewtask + "/form";
+            var responseFormKey = client.GetAsync(UrlFormKey).Result.Content.ReadAsStringAsync().Result;
+            var formkey = JsonConvert.DeserializeObject<dynamic>(responseFormKey);
+            var formkeytext = Convert.ToString(formkey.key);
+
+            Console.Write(formkeytext);
+
+
+            return RedirectToPage(formkeytext, new { idtask = idnewtask, idinstanced = idinstanced });
+        }
         }
 }

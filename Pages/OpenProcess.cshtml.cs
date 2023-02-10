@@ -10,7 +10,7 @@ namespace VistasCamunda.Pages
 
         public async void OnGet()
         {
-
+        
             
         }
         [HttpPost]
@@ -27,10 +27,17 @@ namespace VistasCamunda.Pages
             var process = JsonConvert.DeserializeObject<dynamic>(responseIdProcess)[0];
             var idtask = Convert.ToString(process.id);
             var idinstanced = Convert.ToString(process.processInstanceId);
-          
+
+            // form key
+            string UrlFormKey = "http://localhost:8080/engine-rest/task/" + idtask + "/form";
+            var responseFormKey = client.GetAsync(UrlFormKey).Result.Content.ReadAsStringAsync().Result;
+            var formkey = JsonConvert.DeserializeObject<dynamic>(responseFormKey);
+            var formkeytext = Convert.ToString(formkey.key);
+
+            Console.Write(formkeytext);
 
 
-            return RedirectToPage("/FormularioIngreso", new { id = idtask, idinstanced = idinstanced });
+            return RedirectToPage(formkeytext, new { id = idtask, idinstanced = idinstanced });
         }
     }
 }
