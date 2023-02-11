@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zoW+QGRraG0PWf2Pty7PwiJiWUyMWbxO97p9ymdNn0bqgH4SaU0LgNrF9FZfSds07lQ1IAWig/AIrslV/Jk3xA==",
+  "dgSpecHash": "W77lXHvGGZlzE1JGcJbx+icG8fWbFQWtj+92v2csEUdeLrmfozvTPzOoea4QLAsuVqwqecwQ8w89pvuo58mbNA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Roger Roldan\\Desktop\\Sasoftco\\Gov\\Msg Foundation\\VistasCamunda\\VistasCamunda\\VistasCamunda\\VistasCamunda.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Roger Roldan\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Roger Roldan\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Roger Roldan\\.nuget\\packages\\refit\\5.0.23\\refit.5.0.23.nupkg.sha512",
+    "C:\\Users\\Roger Roldan\\.nuget\\packages\\restsharp\\108.0.3\\restsharp.108.0.3.nupkg.sha512",
     "C:\\Users\\Roger Roldan\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\Roger Roldan\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\Roger Roldan\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",

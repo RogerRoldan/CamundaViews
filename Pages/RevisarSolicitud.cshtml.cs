@@ -17,6 +17,7 @@ namespace VistasCamunda.Pages
         public string Ciudad { get; set; }
         public string Email { get; set; }
         public int Telefono { get; set; }
+        public string AceptarContrato { get; set; }
 
         public async Task OnGet(string idtask, string idinstanced)
         {
@@ -33,7 +34,8 @@ namespace VistasCamunda.Pages
             Ciudad = variables.Ciudad.value;
             Email = variables.Email.value;
             Telefono = variables.Telefono.value;
- 
+            
+
 
         }
         [HttpPost]

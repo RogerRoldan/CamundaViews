@@ -33,6 +33,8 @@ namespace VistasCamunda.Pages
 
 
             //-------------------------------------
+            //Upload File
+
             string urlbinary = "http://localhost:8080/engine-rest/task/" + id1 + "/variables/" + NombreArchivo +"/data";
             client.BaseAddress = new Uri(urlbinary);
             //se debe agregar el  enctype="multipart/form-data" en el form

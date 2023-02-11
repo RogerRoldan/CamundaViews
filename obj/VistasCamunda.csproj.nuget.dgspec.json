@@ -43,6 +43,10 @@
             "Camunda.Api.Client": {
               "target": "Package",
               "version": "[2.6.0, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[108.0.3, )"
             }
           },
           "imports": [

@@ -34,3 +34,4 @@ C:\Users\Roger Roldan\Desktop\Sasoftco\Gov\Msg Foundation\VistasCamunda\VistasCa
 C:\Users\Roger Roldan\Desktop\Sasoftco\Gov\Msg Foundation\VistasCamunda\VistasCamunda\VistasCamunda\bin\Debug\net6.0\Refit.dll
 C:\Users\Roger Roldan\Desktop\Sasoftco\Gov\Msg Foundation\VistasCamunda\VistasCamunda\VistasCamunda\obj\Debug\net6.0\RefitStubs.g.cs
 C:\Users\Roger Roldan\Desktop\Sasoftco\Gov\Msg Foundation\VistasCamunda\VistasCamunda\VistasCamunda\obj\Debug\net6.0\VistasCamunda.csproj.CopyComplete
+C:\Users\Roger Roldan\Desktop\Sasoftco\Gov\Msg Foundation\VistasCamunda\VistasCamunda\VistasCamunda\bin\Debug\net6.0\RestSharp.dll
